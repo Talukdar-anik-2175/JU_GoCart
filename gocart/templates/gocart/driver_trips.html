@@ -1,0 +1,119 @@
+{% extends 'gocart/base.html' %}
+{% load tz %}
+{% block title %}Driver Trips{% endblock %}
+
+{% block extra_head %}
+<style>
+  body {
+    background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+  }
+
+  .trip-container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .trip-card {
+    background: #f1f8e9;
+    border-left: 6px solid #4caf50;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  .trip-card h5 {
+    margin-bottom: 0.6rem;
+    color: #2e7d32;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .trip-card p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: #444;
+  }
+
+  .trip-card .action-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .trip-card .btn {
+    padding: 6px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .no-data {
+    text-align: center;
+    color: #999;
+    margin-top: 2rem;
+    font-style: italic;
+    font-size: 1rem;
+  }
+
+  .form-label {
+    font-weight: 500;
+    color: #388e3c;
+  }
+
+  .btn-success {
+    background-color: #4caf50;
+    border-color: #4caf50;
+  }
+
+  .btn-success:hover {
+    background-color: #43a047;
+    border-color: #388e3c;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5" style="margin-top: 80px;">
+  <div class="trip-container">
+    <h2 class="text-center text-success mb-4">🛺 Your Trips</h2>
+
+    <!-- Search Form -->
+    <form method="GET" class="mb-4">
+      <div class="mb-3">
+        <label for="travel_date" class="form-label">Select a Date to View Trips</label>
+        <input type="date" class="form-control" name="travel_date" id="travel_date"
+            value="{{ request.GET.travel_date|default:'' }}"
+            min="{% now 'Y-m-d' %}" required>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success px-4" type="submit">View Trips</button>
+      </div>
+    </form>
+
+    {% if request.GET.travel_date %}
+      {% if trips %}
+        {% for trip in trips %}
+          <div class="trip-card">
+            <h5>{{ trip.cart.number_plate }} — {{ trip.cart.route.name }}</h5>
+            <p><strong>Start Time:</strong> {{ trip.start_time }}</p>
+            <p><strong>Drop Time:</strong> {{ trip.drop_time }}</p>
+            <p><strong>Date:</strong> {{ trip.travel_date }}</p>
+
+            <div class="action-btn">
+              <a href="{% url 'driver_trip_detail' trip.id %}" class="btn btn-primary btn-sm">👁️ View Details</a>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="no-data">😔 No trip data available for the selected date.</div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

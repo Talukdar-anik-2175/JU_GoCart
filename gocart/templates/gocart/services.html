@@ -1,0 +1,42 @@
+{% extends "gocart/base.html" %}
+{% load static %}
+
+{% block title %}Services - JU EV Cart{% endblock %}
+
+{% block content %}
+
+<!-- Service Intro -->
+<section class="service-intro" style="background: linear-gradient(135deg, #e0f7fa, #e8f5e9); padding: 140px 20px 60px; text-align: center;">
+  <div class="container">
+    <h1 style="font-size: 2.8rem; color: #00695c; margin-bottom: 20px; font-weight: 700;">Empowering Green Mobility at JU</h1>
+    <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">
+      At Jahangirnagar University, the Electric Vehicle (EV) initiative represents a visionary shift towards sustainable campus living.
+      Powered entirely by clean electric energy, these vehicles offer an eco-conscious alternative to traditional transport — eliminating harmful emissions while delivering efficient, quiet, and cost-effective mobility. 
+      <br><br>
+      Supported by RideSwift’s smart booking solutions, JU’s EV service is redefining convenience while championing environmental stewardship. 
+      Together, we are driving forward a future where innovation meets responsibility — one ride at a time.
+    </p>
+  </div>
+</section>
+
+<!-- Service Cards -->
+<section class="container my-5">
+  <div class="row g-4">
+    {% comment %} Example cards, repeat for each service {% endcomment %}
+    {% for service in services %}
+    <div class="col-md-4">
+      <a href="#" class="text-decoration-none text-dark">
+        <div class="card h-100 shadow-sm">
+          <img src="{{ service.image }}" class="card-img-top" alt="{{ service.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ service.title }}</h5>
+            <p class="card-text">{{ service.description }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

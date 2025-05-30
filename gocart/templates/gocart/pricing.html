@@ -1,0 +1,106 @@
+{% extends "gocart/base.html" %}
+{% load static %}
+
+{% block title %}Pricing - JU EV Cart{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="page-header text-center" style="margin-top: 110px; margin-bottom: 30px;">
+  <div class="container">
+    <h1 style="font-size: 2.8rem; color: #00695c; font-weight: bold;">Electric Cart Price Chart</h1>
+  </div>
+</section>
+
+<!-- Pricing Table -->
+<div class="container mb-5" style="padding-bottom: 20px;">
+  <div class="pricing-table table-responsive" style="background: #ffffff; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); overflow: hidden;">
+    <table class="table table-bordered mb-0">
+      <thead style="background-color: #00acc1; color: #fff;">
+        <tr>
+          <th>রুট নং</th>
+          <th>যাত্রা শুরুর স্থান</th>
+          <th>গন্তব্য</th>
+          <th>ভাড়া (টাকা)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="3">01</td>
+          <td rowspan="2">নওয়াব ফয়জুন্নেসা হল গেট সংলগ্ন ফাকা জায়গা</td>
+          <td>গণিত ও পরিসংখ্যান ভবন মোড় পর্যন্ত</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>গণিত ও পরিসংখ্যান ভবন মোড় অতিক্রম করে জিমনেশিয়াম মোড়</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>গণিত ও পরিসংখ্যান ভবন মোড়</td>
+          <td>জিমনেশিয়াম মোড় পর্যন্ত</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td rowspan="3">02</td>
+          <td rowspan="2">বীরপ্রতীক তারামন বিবি হল গেট সংলগ্ন ফাঁকা জায়গা</td>
+          <td>চৌরঙ্গী পর্যন্ত</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>চৌরঙ্গী অতিক্রম করে পুরাতন কলা ভবন পর্যন্ত</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>চৌরঙ্গী</td>
+          <td>পুরাতন কলা ভবন পর্যন্ত</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td rowspan="3">03</td>
+          <td rowspan="2">মীর মশাররফ হোসেন হল সংলগ্ন ফাঁকা জায়গা</td>
+          <td>পদার্থ রসায়ন বিভাগ পর্যন্ত</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>পদার্থ রসায়ন বিভাগ অতিক্রম করে অমর একুশে / সমাজ বিজ্ঞান ভবন পর্যন্ত</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>পদার্থ রসায়ন বিভাগ</td>
+          <td>অমর একুশে / সমাজ বিজ্ঞান ভবন</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td rowspan="6">04</td>
+          <td rowspan="3">রবীন্দ্রনাথ ঠাকুর / রফিক জব্বার হল সংলগ্ন ফাঁকা জায়গা</td>
+          <td>শহীদ সালাম - বরকত হল পর্যন্ত</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>শহীদ সালাম - বরকত হল অতিক্রম করে মেডিকেল সেন্টার</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>মেডিকেল সেন্টার অতিক্রম করে পুরাতন কলা ভবন পর্যন্ত</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td rowspan="2">শহীদ সালাম - বরকত হল</td>
+          <td>মেডিকেল সেন্টার পর্যন্ত</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>পুরাতন কলা ভবন পর্যন্ত</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>মেডিকেল সেন্টার</td>
+          <td>পুরাতন কলা ভবন পর্যন্ত</td>
+          <td>5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "gocart/base.html" %}
+{% load static %}
+
+{% block title %}Book a Ride - JU EV Cart{% endblock %}
+
+{% block content %}
+<!-- Booking Form Section -->
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 96vh;">
+  <div class="form-container col-md-6" style="background: rgba(255,255,255,0.9); padding: 40px; border-radius: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.15); margin-top: 80px;">
+    <h2 class="text-center mb-4">Book Your Ride</h2>
+
+    <form method="POST" action="{% url 'search_carts' %}">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="from" class="form-label">From Destination</label>
+        <select class="form-select" id="from" name="from" required>
+          <option value="" disabled selected>Select starting point</option>
+          {% for stop in stops %}
+          <option value="{{ stop }}">{{ stop }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="to" class="form-label">To Destination</label>
+        <select class="form-select" id="to" name="to" required>
+          <option value="" disabled selected>Select destination</option>
+          {% for stop in stops %}
+          <option value="{{ stop }}">{{ stop }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="travel_date" class="form-label">Select Date</label>
+        <input type="date" class="form-control" id="travel_date" name="travel_date" required min="">
+      </div>
+
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-warning btn-lg">Search Ride</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  // Set today's date as the minimum selectable date
+  document.addEventListener("DOMContentLoaded", function () {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const minDate = `${yyyy}-${mm}-${dd}`;
+    document.getElementById('travel_date').setAttribute('min', minDate);
+  });
+</script>
+{% endblock %}
